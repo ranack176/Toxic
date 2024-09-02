@@ -104,7 +104,6 @@ def logo():
 # Options Banner
 def banner():
     amount = str(main.amount)
-    # 21 - 1(lenOfAmount) = 20....
     amount = amount + (" " * (21-len(amount)))
     
     print("\033[95m-" * (columns), end = "")
@@ -149,23 +148,6 @@ def getNumber():
         psb("\n    \033[92m[\033[91m!\033[92m] \033[37mPlease Enter 11 Digit Number!")
         number = getNumber()
     
-    return number
+    return
 
-# Function for Call Bombing
-def call_bomb(number):
-    try:
-        response = requests.post(
-            "https://api.callservice.com/v1/call",
-            headers={"Authorization": "Bearer YOUR_API_KEY"},
-            json={"to": number, "from": "YOUR_NUMBER", "message": "This is a call bomb!"}
-        )
-        if response.status_code == 200:
-            print(f"Call to {number} sent successfully.")
-            return True
-        else:
-            print(f"Failed to send call to {number}. Status code: {response.status_code}")
-            return False
-    except Exception as e:
-        print(f"An error occurred: {e}")
-        return False
 
